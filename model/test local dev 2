@@ -1,0 +1,590 @@
+{
+	"info": {
+		"_postman_id": "f975c9c5-138b-4e34-b117-75f848eb49e6",
+		"name": "AITAU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7646762"
+	},
+	"item": [
+		{
+			"name": "Users and tokens",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// add data to an environment",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"//postman.setEnvironmentVariable(\"username\", jsonData.refresh_token);",
+									"//postman.setEnvironmentVariable(\"password\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"testuser1\",\n  \"password\": \"pswfortests1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/users/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// add data to an environment",
+									"var jsonData = JSON.parse(responseBody);",
+									"//postman.setEnvironmentVariable(\"refresh\", jsonData.refresh);",
+									"//postman.setEnvironmentVariable(\"access\", jsonData.access);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"testuser1\",\n  \"password\": \"pswfortests1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/tokens/jwt/create/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"tokens",
+								"jwt",
+								"create",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create token example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"testuser1\",\n  \"password\": \"pswfortests1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tokens/jwt/create/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tokens",
+										"jwt",
+										"create",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 16 Jan 2023 16:16:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "438"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3Mzk3MjE2MywianRpIjoiYzFiMDVmZjgzY2VjNGE1ZTlkYTViNjMxNmQ3MDk4NGQiLCJ1c2VyX2lkIjoyfQ.RSSGSMcY5w9Pt77GFE5vTx8J5OdB8CJICB8-JrKLfWE\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5ODA1NzYzLCJqdGkiOiI0NDM5MDk0OWVkYzY0YTc0OTYzMGRhMDlhYjkzMjdjYyIsInVzZXJfaWQiOjJ9.OJNz4_QNDjlZgbHn8gSl01eT0ZuR7mPd_JbpMTKmN4E\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Licence",
+			"item": [
+				{
+					"name": "Add licence",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"test licence\",\n  \"text\": \"test text for licence\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/licence/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"licence",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get licences",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/licence",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"licence"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific licence",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/licence/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"licence",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Datasets",
+			"item": [
+				{
+					"name": "Add inforamtion about original dataset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"test dataset 4\",\n  \"general_description\": \"test general description 4\",\n  \"metadata\": \"test metadata 2\",\n  \"created\": \"2019-08-24T14:15:22Z\",\n  \"preprocessing\": \"test preprocessing\",\n  \"datatype\": 1\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/datasets/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"datasets",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all datasets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/datasets/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"datasets",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Datatypes",
+			"item": [
+				{
+					"name": "Get all datatypes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/datatype/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"datatype",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific datatype",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/datatype/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"datatype",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Synthetic Models (pretrained)",
+			"item": [
+				{
+					"name": "Add (upload) a synthetic model",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5ODA1NzYzLCJqdGkiOiI0NDM5MDk0OWVkYzY0YTc0OTYzMGRhMDlhYjkzMjdjYyIsInVzZXJfaWQiOjJ9.OJNz4_QNDjlZgbHn8gSl01eT0ZuR7mPd_JbpMTKmN4E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"test model 6\",\n  \"dataset\": 1,\n  \"licence\": 1,\n  \"implementation\": 1,\n  \"git_uploaded_model\": \"http://example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/models/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"models",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add (FILE) a synthetic model",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5ODA1NzYzLCJqdGkiOiI0NDM5MDk0OWVkYzY0YTc0OTYzMGRhMDlhYjkzMjdjYyIsInVzZXJfaWQiOjJ9.OJNz4_QNDjlZgbHn8gSl01eT0ZuR7mPd_JbpMTKmN4E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "model",
+									"type": "file",
+									"src": "/Users/fedius/Documents/Dev/aitau-backend/Postman/AITAU AWS EC2 environment.postman_environment.json"
+								},
+								{
+									"key": "name",
+									"value": "file test branch post-file",
+									"type": "text"
+								},
+								{
+									"key": "dataset",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "licence",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "implementation",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "git_uploaded_model",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/models/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"models",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all pre-trained models",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/models/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"models",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Implementation",
+			"item": [
+				{
+					"name": "Add implementation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"test implementation 1\",\n  \"research\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/implementation/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"implementation",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Research",
+			"item": [
+				{
+					"name": "Add research",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"test research 1\",\n  \"datatype\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/research/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"research",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "File upload",
+			"item": [
+				{
+					"name": "Add file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file_uploaded",
+									"type": "file",
+									"src": "/Users/fedius/Documents/Dev/aitau-backend/Postman/AITAU.postman_collection.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/upload/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"upload",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
